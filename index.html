@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Holiday Shoot Props</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* VOICE: the fall prop checklist, dressed for a winter-luxury rooftop.
+   IDEA: the Outdoer call sheet, evergreen ground and champagne-gold details.
+   PICTURE: the working checklist itself, under a swatch strip of the set palette.
+   COLOUR and TYPE: evergreen night in both themes, ivory text, gold accent; Instrument Serif + Public Sans.
+   LAYOUT: one narrow call-sheet column, sticky progress bar, one section per person getting props. */
+:root {
+  color-scheme: dark;
+  --bg: #11221A;
+  --surface: #172C22;
+  --ink: #F2EBDC;
+  --muted: #A8B5A7;
+  --line: #2B4537;
+  --accent: #D7B56D;
+  --done: #7E8D80;
+  --check: #D7B56D;
+  --found: #8FC59C;
+  --danger: #A8343F;
+  --display: "Instrument Serif", "Didot", "Bodoni 72", Georgia, serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* winter set palette */
+  --evergreen: #2E5641; --champagne: #D9C08A; --ivory: #F3EDE0; --velvet: #7A1F2E;
+  --brass: #A8834B; --walnut: #4A3222; --glow: #F7D99C;
+}
+*{box-sizing:border-box}
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45; }
+body::after { content:""; position: fixed; inset: 0 0 auto; height: 260px; z-index: -1; pointer-events: none; background: radial-gradient(120% 100% at 50% 0%, rgba(215,181,109,.10), transparent 70%); }
+.wrap { max-width: 680px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+header .eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(42px, 10vw, 60px); line-height: .98; margin: 10px 0 8px; text-wrap: balance; }
+h1 i { display: block; }
+.sub { color: var(--muted); margin: 0; }
+.sub b { color: var(--ink); font-weight: 500; }
+
+.palette { display: flex; margin: 20px 0 6px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.palette div { flex: 1; min-width: 0; padding: 30px 6px 6px; font-size: 10px; line-height: 1.2; color: #F7F1E4; }
+.palette div.light { color: #1B2A21; }
+.palette b { display: block; font-weight: 600; font-size: 10.5px; }
+.palette-note { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
+@media (max-width: 520px) { .palette { flex-wrap: wrap; } .palette div { flex: 1 1 25%; padding-top: 22px; } }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px; margin-top: 14px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.count { font-variant-numeric: tabular-nums; font-weight: 600; }
+.track { flex: 1 1 160px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.fill { height: 100%; width: 0; background: var(--accent); transition: width .25s ease; }
+.controls { display: flex; gap: 8px; }
+button.chip { font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+button.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+button.chip:focus-visible, .tg:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+section.scene { margin-top: 38px; }
+.scene-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.scene-num { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+h2 { font-family: var(--display); font-weight: 400; font-size: 34px; margin: 2px 0 4px; line-height: 1.05; }
+.scene-count { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; white-space: nowrap; text-align: right; }
+.meta { font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+.meta span + span::before { content: " · "; }
+
+h3 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 18px 0 6px; }
+.flag { font-size: 12.5px; color: var(--muted); background: var(--surface); border: 1px dashed var(--accent); border-radius: 6px; padding: 8px 10px; margin: 6px 0 8px; }
+
+ul.list { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.item { border-top: 1px solid var(--line); }
+.item:first-child { border-top: 0; }
+.item .head { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px 8px; min-height: 24px; }
+.box { flex: none; width: 22px; height: 22px; border: 1.5px solid var(--muted); border-radius: 5px; display: grid; place-items: center; margin-top: 1px; transition: background .15s, border-color .15s; }
+.box svg { width: 14px; height: 14px; opacity: 0; }
+.box svg path { stroke: var(--found); }
+.item.is-found .box { border-color: var(--found); border-width: 2px; }
+.item.is-found .box svg { opacity: 1; }
+.item.is-packed .box { background: var(--check); border-color: var(--check); }
+.item.is-packed .box svg { opacity: 1; }
+.item.is-packed .box svg path { stroke: var(--bg); }
+.txt { min-width: 0; flex: 1; }
+.name { font-weight: 500; }
+.note { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.tags { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-left: 6px; vertical-align: 1px; }
+.tag { font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; border: 1px solid var(--line); color: var(--muted); padding: 1px 6px; border-radius: 4px; }
+.tag.tony { border-color: var(--accent); color: var(--accent); }
+button.tag { font-family: inherit; background: transparent; cursor: text; line-height: 1.4; }
+button.tag:hover { border-color: var(--muted); }
+button.tag:focus-visible, .tag-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+button.tag.add-tag { border-style: dashed; cursor: pointer; text-transform: none; letter-spacing: 0; opacity: .75; }
+button.tag.add-tag:hover { opacity: 1; }
+.tag-input { font: inherit; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); background: var(--bg); border: 1px solid var(--accent); border-radius: 4px; padding: 1px 6px; width: 12ch; min-width: 6ch; max-width: 100%; }
+.scene-prog { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 6px 10px; margin: 2px 0 14px; max-width: 520px; }
+.scene-prog .sp-label { font-size: 12.5px; font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; min-width: 108px; }
+.scene-prog .sp-label b { color: var(--ink); font-weight: 600; }
+.scene-prog .track { height: 6px; }
+.sw { flex: none; width: 12px; height: 12px; border-radius: 50%; margin-top: 6px; border: 1px solid rgba(255,255,255,.25); }
+.item.is-packed .name { text-decoration: line-through; color: var(--done); }
+.row { display: flex; align-items: flex-start; }
+.row > .head { flex: 1; min-width: 0; }
+.thumb { flex: none; width: 64px; height: 64px; margin: 10px 12px 0 0; padding: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--line); cursor: zoom-in; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.item.is-packed .thumb { opacity: .55; }
+.lightbox { position: fixed; inset: 0; z-index: 20; background: rgba(6,14,10,.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
+.lightbox img { max-width: 100%; max-height: 78vh; border-radius: 6px; object-fit: contain; }
+.lightbox .cap { color: #F2EBDC; font-family: var(--display); font-style: italic; font-size: 24px; text-align: center; }
+.lightbox .close { position: absolute; top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); font: inherit; font-size: 13px; color: #F2EBDC; background: transparent; border: 1px solid rgba(242,235,220,.4); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.who { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; padding: 0 14px 12px 48px; }
+.who .bring { display: flex; align-items: center; gap: 8px; flex: 1 1 170px; min-width: 0; }
+.toggles { display: flex; gap: 6px; flex: none; }
+.tg { font: inherit; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px 5px 9px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; min-height: 30px; }
+.tg svg { width: 12px; height: 12px; }
+.tg svg path { stroke: currentColor; }
+.tg.f[aria-pressed="true"] { background: var(--found); border-color: var(--found); color: var(--bg); }
+.tg.p[aria-pressed="true"] { background: var(--check); border-color: var(--check); color: var(--bg); }
+.who-label { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.who input { flex: 1 1 auto; min-width: 0; font: inherit; font-size: 13.5px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px dashed var(--line); padding: 4px 2px; border-radius: 0; }
+.who input::placeholder { color: var(--muted); opacity: .7; }
+.who input:focus { outline: none; border-bottom: 1px solid var(--accent); }
+.who input:not(:placeholder-shown) { border-bottom-style: solid; font-weight: 500; }
+body.v-find .item[data-found="1"], body.v-pack .item.is-packed { display: none; }
+body.v-find .group.all-found, body.v-pack .group.all-packed { display: none; }
+.prog { display: flex; align-items: center; gap: 10px; flex: 1 1 220px; min-width: 0; }
+.prog .count { min-width: 100px; }
+.fill.found { background: var(--found); }
+.legend { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; }
+.legend b { color: var(--ink); font-weight: 600; }
+.item.is-removed, .group.all-removed { display: none; }
+.rm { flex: none; width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid transparent; background: transparent; color: var(--muted); border-radius: 999px; cursor: pointer; padding: 0; }
+.rm svg { width: 13px; height: 13px; }
+.rm svg path { stroke: currentColor; }
+.rm:hover { border-color: var(--line); color: var(--accent); }
+.rm:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.chip.danger { background: var(--danger); border-color: var(--danger); color: #F7F1E4; }
+.add-open { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 10px; font: inherit; font-size: 14px; font-weight: 500; color: var(--ink); background: transparent; border: 1px dashed var(--muted); border-radius: 8px; padding: 11px 12px; cursor: pointer; }
+.add-open:hover { border-style: solid; border-color: var(--accent); }
+.add-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.modal { position: fixed; inset: 0; z-index: 30; background: rgba(6,14,10,.7); display: flex; align-items: center; justify-content: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.modal .card { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 12px; width: 100%; max-width: 440px; max-height: 100%; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.modal-title { font-family: var(--display); font-weight: 400; font-size: 30px; letter-spacing: 0; text-transform: none; color: var(--ink); margin: 0; }
+.modal p { margin: 0; color: var(--muted); }
+.modal .actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.modal .actions .chip { padding: 9px 16px; font-size: 14px; }
+button.chip.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+button.chip[disabled] { opacity: .6; cursor: default; }
+.fld { display: flex; flex-direction: column; gap: 5px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.fld em { font-style: normal; font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .8; }
+.fld input, .fld textarea, .fld select { font: inherit; font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 400; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%; }
+.fld textarea { resize: vertical; min-height: 70px; }
+.fld input:focus, .fld textarea:focus, .fld select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.photo-pick { display: flex; align-items: center; justify-content: center; min-height: 64px; border: 1px dashed var(--muted); border-radius: 8px; cursor: pointer; font-size: 14px; letter-spacing: 0; text-transform: none; font-weight: 500; color: var(--ink); }
+.vh { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.vh:focus-visible + .photo-pick, .photo-pick:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.photo-prev { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+label.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; display: inline-flex; align-items: center; cursor: pointer; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 500; color: var(--ink); }
+.photo-prev img { width: 84px; height: 84px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+.form-err { color: #F0A3AB !important; font-size: 13px; }
+.removed { margin-top: 30px; font-size: 13.5px; }
+.removed summary { cursor: pointer; color: var(--muted); }
+.removed-list { list-style: none; margin: 8px 0 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.removed-list li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; border-top: 1px solid var(--line); }
+.removed-list li:first-child { border-top: 0; }
+
+.footer { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 12.5px; color: var(--muted); }
+.confirm { display: inline-flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.sync { margin-left: auto; }
+@media (prefers-reduced-motion: reduce) { .fill, .box { transition: none; } }
+@media (max-width: 420px) { .who { padding-left: 14px; } }
+[hidden]{display:none!important}
+body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Outdoer × Aberdeen Story Co · Chicago rooftop</div>
+    <h1>Outdoer <i>Holiday Shoot</i></h1>
+    <p class="sub">Prop checklist · <b>Thu, Dec 3, 2026</b> · Load-in 2:30 PM · 171 N Aberdeen St, roof deck</p>
+    <div class="palette" aria-label="Set color palette">
+      <div style="background:var(--evergreen)"><b>Evergreen</b>Tree, holly</div>
+      <div class="light" style="background:var(--champagne)"><b>Champagne</b>Ornaments, ribbon</div>
+      <div class="light" style="background:var(--ivory)"><b>Ivory</b>Wrap, rug</div>
+      <div style="background:var(--velvet)"><b>Velvet red</b>Stockings, 1 bow</div>
+      <div style="background:var(--brass)"><b>Brass</b>Lamps, flutes</div>
+      <div style="background:var(--walnut)"><b>Walnut</b>Table</div>
+      <div class="light" style="background:var(--glow)"><b>Warm glow</b>All lights</div>
+    </div>
+    <p class="palette-note">Suggested winter palette. Color dots on items match it. The robots stay red and blue.</p>
+    <p class="legend"><b>Found</b> means we have it. <b>Packed</b> means it's in the car for the shoot.</p>
+  </header>
+
+  <div class="bar">
+    <div class="prog"><span class="count" id="countFound">0 / 0 found</span><div class="track"><div class="fill found" id="fillFound"></div></div></div>
+    <div class="prog"><span class="count" id="countPacked">0 / 0 packed</span><div class="track"><div class="fill" id="fillPacked"></div></div></div>
+    <div class="controls" role="group" aria-label="Filter the list">
+      <button class="chip" data-view="all" aria-pressed="true">All</button>
+      <button class="chip" data-view="find" aria-pressed="false">To find</button>
+      <button class="chip" data-view="pack" aria-pressed="false">To pack</button>
+    </div>
+  </div>
+
+  <main id="scenes"></main>
+  <div class="removed" id="removed" hidden></div>
+
+  <div class="footer">
+    <span class="confirm" id="resetArea"><button class="chip" id="resetBtn">Clear checkmarks</button></span>
+    <span class="sync" id="sync">Connecting…</span>
+  </div>
+</div>
+
+<div class="modal" id="delModal" hidden role="dialog" aria-modal="true" aria-labelledby="delTitle">
+  <div class="card">
+    <h3 class="modal-title" id="delTitle">Delete this prop?</h3>
+    <p id="delText"></p>
+    <div class="actions">
+      <button class="chip" id="delCancel" type="button">Cancel</button>
+      <button class="chip danger" id="delConfirm" type="button">Delete prop</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="addModal" hidden role="dialog" aria-modal="true" aria-labelledby="addTitle">
+  <form class="card" id="addForm" novalidate>
+    <h3 class="modal-title" id="addTitle">Add a prop</h3>
+    <label class="fld" id="sceneFld"><span>List</span>
+      <select id="addScene">
+        <option value="michael">Michael</option>
+        <option value="cj">CJ</option>
+        <option value="both">Michael & CJ</option>
+        <option value="buy">Buy or rent</option>
+        <option value="brief">From the brief</option>
+      </select>
+    </label>
+    <label class="fld"><span>Prop name</span>
+      <input id="addName" type="text" maxlength="80" autocomplete="off" placeholder="e.g. Velvet throw pillow">
+    </label>
+    <label class="fld"><span>Description <em>optional</em></span>
+      <textarea id="addDesc" maxlength="300" rows="3" placeholder="Color, size, how it's used in the shot"></textarea>
+    </label>
+    <label class="fld" id="whoFld"><span>Who's bringing it <em>optional</em></span>
+      <input id="addWho" type="text" maxlength="120" autocomplete="off" placeholder="Name">
+    </label>
+    <div class="fld"><span>Reference photo <em>optional</em></span>
+      <input type="file" id="addPhoto" accept="image/*" class="vh">
+      <label class="photo-pick" for="addPhoto" id="photoPick">Choose a photo</label>
+      <div class="photo-prev" id="photoPrev" hidden>
+        <img id="photoImg" alt="Selected reference photo">
+        <label class="chip" for="addPhoto" id="photoReplace">Replace photo</label>
+        <button type="button" class="chip" id="photoClear">Remove photo</button>
+      </div>
+    </div>
+    <p class="form-err" id="addErr" hidden></p>
+    <div class="actions">
+      <button class="chip" type="button" id="addCancel">Cancel</button>
+      <button class="chip primary" type="submit" id="addSubmit">Add prop</button>
+    </div>
+  </form>
+</div>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="lbCap">
+  <button class="close" id="lbClose" type="button">Close</button>
+  <img id="lbImg" alt="">
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<script>
+const SCENES = [
+  {
+    id: "michael", num: "Bringing", title: "Michael",
+    meta: ["Bring to load-in, 2:30 PM"],
+    groups: [
+      { label: "Prop list", items: [
+        { id: "m-tree", name: "Artificial tree (pre-lit)", sw: "evergreen", note: "The heart of the set. She opens the last present by the tree. Weight the base, the roof may be windy." }
+      ]}
+    ]
+  },
+  {
+    id: "cj", num: "Bringing", title: "CJ",
+    meta: ["Bring to load-in, 2:30 PM"],
+    groups: [
+      { label: "Prop list", items: [
+        { id: "c-garland", name: "Holly garland w/ lights", sw: "evergreen", note: "Battery-lit is easiest on the roof" },
+        { id: "c-stockings", name: "Stockings", sw: "velvet", note: "Hung by the fire" },
+        { id: "c-flutes", name: "Champagne flutes", sw: "brass", note: "One for each of the four friends, plus a spare" }
+      ]}
+    ]
+  },
+  {
+    id: "both", num: "Bringing", title: "Michael & CJ",
+    meta: ["Split between you", "Put a name on each one"],
+    groups: [
+      { label: "Prop list", items: [
+        { id: "b-ornaments", name: "Minimalist ornaments", sw: "champagne", note: "Champagne gold and ivory, no novelty pieces" },
+        { id: "b-lights", name: "String lights", sw: "glow", note: "Warm white for blue hour" },
+        { id: "b-boxes", name: "6 gift boxes", sw: "ivory", note: "One holds the Outdoer coat, the last present. Make sure it fits." },
+        { id: "b-wrap", name: "Wrapping paper + ribbon", sw: "champagne", note: "Ivory paper, champagne ribbon, one velvet-red bow" }
+      ]}
+    ]
+  },
+  {
+    id: "buy", num: "To source", title: "Buy or rent",
+    meta: ["Needs a name on each", "In hand before Thu, Dec 3"],
+    groups: [
+      { label: "Prop list", items: [
+        { id: "s-rug", name: "Rug", sw: "ivory", note: "Makes the roof deck read as a living room" },
+        { id: "s-lamps", name: "Lamps", sw: "brass", note: "Warm glow; cordless or near power" },
+        { id: "s-table", name: "Table", sw: "walnut", note: "Two friends play Rock ’Em Sock ’Em here" },
+        { id: "s-robots", name: "Rock ’Em Sock ’Em Robots", note: "A robot's head pops up at the coat reveal. Test it before the shoot." },
+        { id: "s-champagne", name: "Champagne", sw: "champagne", note: "For the flutes. Bring a spare bottle for retakes." },
+        { id: "s-film", name: "35mm film roll", note: "For the Canon AE-1" },
+        { id: "s-flash", name: "Flash for Canon AE-1 + batteries", note: "Speedlite 155A/177A, used. The friend snaps her picture at the reveal." }
+      ]}
+    ]
+  },
+  {
+    id: "brief", num: "Check", title: "From the brief",
+    meta: ["Not on the prop list yet"],
+    groups: [
+      { label: "Implied by the scene", flag: "The brief calls for these, but they're not on the prop list. Confirm who's covering each, or delete what isn't needed.", items: [
+        { id: "x-fire", name: "Fireplace or faux fire", note: "“By the fire, the fourth unwraps the last present”" },
+        { id: "x-chairs", name: "Chairs for the table", note: "Two friends sit at the table" },
+        { id: "x-camera", name: "Canon AE-1 camera", note: "The new film camera. Flash and film are on the list, the camera isn't." },
+        { id: "x-power", name: "Power on the roof", note: "Extension cords or battery packs for the tree, lights and lamps" },
+        { id: "x-weights", name: "Sandbags or weights", note: "Cold and windy rooftop. For the tree, lamps and light stands." }
+      ]}
+    ]
+  }
+];
+
+const IMGS = new Set();
+const imgSrc = (it, w) => it.img ? "https://drive.google.com/thumbnail?id=" + encodeURIComponent(it.img) + "&sz=w" + (w || 400) : it.id + ".jpg";
+const hasImg = it => !it.noImg && (IMGS.has(it.id) || !!it.img);
+function openLightbox(it) {
+  const lb = document.getElementById("lightbox");
+  document.getElementById("lbImg").src = imgSrc(it, 1400);
+  document.getElementById("lbImg").alt = it.name;
+  document.getElementById("lbCap").textContent = it.name;
+  lb.hidden = false; lastFocus = document.activeElement;
+  document.getElementById("lbClose").focus();
+}
+let lastFocus = null;
+function closeLightbox() { document.getElementById("lightbox").hidden = true; if (lastFocus) lastFocus.focus(); }
+document.getElementById("lightbox").addEventListener("click", closeLightbox);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !document.getElementById("lightbox").hidden) closeLightbox(); });
+const SW = { evergreen: "var(--evergreen)", champagne: "var(--champagne)", ivory: "var(--ivory)", velvet: "var(--velvet)", brass: "var(--brass)", walnut: "var(--walnut)", glow: "var(--glow)" };
+const SW_NAME = { evergreen: "Evergreen", champagne: "Champagne", ivory: "Ivory", velvet: "Velvet red", brass: "Brass", walnut: "Walnut", glow: "Warm glow" };
+const LS_KEY = "winter-props-v1";
+const LS_PACKED = "winter-props-packed-v1";
+const LS_NOTES = "winter-props-notes-v1";
+const LS_CUSTOM = "winter-props-custom-v1";
+const LS_HIDDEN = "winter-props-hidden-v1";
+const readLS = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? d : v; } catch (e) { return d; } };
+let checks = readLS(LS_KEY, {});    // found
+let packed = readLS(LS_PACKED, {});
+let notes = readLS(LS_NOTES, {});
+let custom = readLS(LS_CUSTOM, []); // [{id, name, scene, desc, img}]
+let edits = readLS("winter-props-edits-v1", {}); // built-in prop changes {id: {name, desc, img, noImg}}
+let hidden = new Set(readLS(LS_HIDDEN, []));
+const lastSent = {};
+let builtSig = "";
+
+const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
+const CHECK_SVG = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const PEN_SVG = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9.5 2.5l2 2L5 11l-2.6.6L3 9z" fill="none" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+const X_SVG = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" fill="none" stroke-width="1.8" stroke-linecap="round"/></svg>';
+
+function withEdits(it) {
+  const ov = edits[it.id];
+  if (!ov) return it;
+  const o = Object.assign({}, it);
+  if (ov.name) o.name = ov.name;
+  if ("desc" in ov) o.note = ov.desc;
+  if (ov.img) { o.img = ov.img; o.noImg = false; }
+  else if (ov.noImg) o.noImg = true;
+  if (Array.isArray(ov.tags)) o.tags = ov.tags;
+  return o;
+}
+const sigOf = () => JSON.stringify([custom, edits]);
+function allScenes() {
+  return SCENES.map(sc => {
+    sc = Object.assign({}, sc, { groups: sc.groups.map(g => Object.assign({}, g, { items: g.items.map(withEdits) })) });
+    const mine = custom.filter(c => c.scene === sc.id).map(c => ({ id: c.id, name: c.name, note: c.desc || "", img: c.img || "", noImg: !c.img, tags: c.tags || [], custom: true }));
+    return mine.length ? Object.assign({}, sc, { groups: sc.groups.concat([{ label: "Added by the crew", items: mine }]) }) : sc;
+  });
+}
+function allItems() { const out = []; allScenes().forEach(sc => sc.groups.forEach(g => g.items.forEach(it => out.push(it)))); return out; }
+
+function buildItem(it) {
+  const li = el("li", "item"); li.id = "item-" + it.id;
+  const hd = el("div", "head");
+  const box = el("span", "box"); box.innerHTML = CHECK_SVG; box.setAttribute("aria-hidden", "true");
+  const txt = el("span", "txt");
+  txt.append(el("span", "name", it.name));
+  txt.append(buildTags(it));
+  if (it.note) txt.append(el("span", "note", it.note));
+  hd.append(box, txt);
+  if (it.sw) { const d = el("span", "sw"); d.style.background = SW[it.sw]; d.title = SW_NAME[it.sw]; hd.append(d); }
+
+  const who = el("div", "who");
+  const bring = el("div", "bring");
+  const wl = el("label", "who-label", "Bringing"); wl.htmlFor = "who-" + it.id;
+  const wi = el("input"); wi.type = "text"; wi.id = "who-" + it.id; wi.placeholder = "Who's bringing it?"; wi.autocomplete = "off";
+  wi.value = notes[it.id] || "";
+  let tmr = null;
+  wi.addEventListener("input", () => { notes[it.id] = wi.value; saveLocal(); clearTimeout(tmr); tmr = setTimeout(() => pushDoc(it.id), 700); });
+  wi.addEventListener("blur", () => { clearTimeout(tmr); if ((lastSent[it.id] ?? "") !== (notes[it.id] || "")) pushDoc(it.id); });
+  bring.append(wl, wi);
+  const tgs = el("div", "toggles");
+  const bf = el("button", "tg f"); bf.type = "button"; bf.id = "f-" + it.id; bf.innerHTML = CHECK_SVG + "<span>Found</span>";
+  bf.setAttribute("aria-label", "Found: " + it.name);
+  bf.addEventListener("click", () => setState(it.id, "found", bf.getAttribute("aria-pressed") !== "true"));
+  const bp = el("button", "tg p"); bp.type = "button"; bp.id = "p-" + it.id; bp.innerHTML = CHECK_SVG + "<span>Packed</span>";
+  bp.setAttribute("aria-label", "Packed: " + it.name);
+  bp.addEventListener("click", () => setState(it.id, "packed", bp.getAttribute("aria-pressed") !== "true"));
+  const rm = el("button", "rm"); rm.type = "button"; rm.innerHTML = X_SVG; rm.title = "Delete prop"; rm.setAttribute("aria-label", "Delete " + it.name);
+  rm.addEventListener("click", () => openDelete(it));
+  const ed = el("button", "rm ed"); ed.type = "button"; ed.innerHTML = PEN_SVG; ed.title = "Edit prop"; ed.setAttribute("aria-label", "Edit " + it.name);
+  ed.addEventListener("click", () => openEdit(it));
+  tgs.append(bf, bp, ed, rm);
+  who.append(bring, tgs);
+
+  const row = el("div", "row"); row.append(hd);
+  if (hasImg(it)) {
+    const tb = el("button", "thumb"); tb.type = "button"; tb.setAttribute("aria-label", "View reference photo: " + it.name);
+    const im = el("img"); im.src = imgSrc(it, 300); im.alt = ""; im.loading = "lazy";
+    tb.append(im); tb.addEventListener("click", () => openLightbox(it));
+    row.append(tb);
+  }
+  li.append(row, who);
+  return li;
+}
+
+const isTony = t => /^from\s/i.test(t);
+function buildTags(it) {
+  const tg = el("span", "tags");
+  const tags = it.tags || [];
+  tags.forEach((t, i) => {
+    const b = el("button", "tag" + (isTony(t) ? " tony" : ""), t); b.type = "button";
+    b.title = "Click to edit this label"; b.setAttribute("aria-label", "Edit label: " + t);
+    b.addEventListener("click", () => editTag(it, i, b));
+    tg.append(b);
+  });
+  const add = el("button", "tag add-tag", "+ label"); add.type = "button";
+  add.setAttribute("aria-label", "Add a label to " + it.name);
+  add.addEventListener("click", () => editTag(it, tags.length, add));
+  tg.append(add);
+  return tg;
+}
+function editTag(it, idx, btn) {
+  const tags = (it.tags || []).slice();
+  const inp = el("input", "tag-input"); inp.type = "text"; inp.maxLength = 30; inp.value = tags[idx] || "";
+  inp.placeholder = "Label"; inp.setAttribute("aria-label", "Label text (leave empty to remove)");
+  inp.style.width = Math.max(8, inp.value.length + 2) + "ch";
+  btn.replaceWith(inp); inp.focus(); inp.select();
+  let done = false;
+  const finish = save => {
+    if (done) return; done = true;
+    const val = inp.value.replace(/\s+/g, " ").trim();
+    if (!save || val === (tags[idx] || "")) { inp.replaceWith(btn); return; }
+    if (val) tags[idx] = val; else tags.splice(idx, 1);
+    saveTags(it, tags);
+  };
+  inp.addEventListener("input", () => { inp.style.width = Math.max(8, inp.value.length + 2) + "ch"; });
+  inp.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); finish(true); } if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); finish(false); } });
+  inp.addEventListener("blur", () => finish(true));
+}
+async function saveTags(it, tags) {
+  if (it.custom) { const c = custom.find(x => x.id === it.id); if (c) c.tags = tags; }
+  else { edits[it.id] = Object.assign({}, edits[it.id] || {}, { tags }); }
+  hidePending++; saveLocal(); render();
+  try { const j = await POST({ action: "edit", id: it.id, tags }); hidePending--; applyRemote(j); setSync("Label saved."); }
+  catch (e) { hidePending--; setSync(OFFLINE_MSG); }
+}
+
+let delTarget = null, modalReturn = null;
+function showModal(id, focusEl) { modalReturn = document.activeElement; document.getElementById(id).hidden = false; if (focusEl) focusEl.focus(); }
+function hideModal(id) { document.getElementById(id).hidden = true; if (modalReturn && document.contains(modalReturn)) modalReturn.focus(); }
+function openDelete(it) {
+  delTarget = it;
+  document.getElementById("delText").textContent = "Are you sure you want to delete “" + it.name + "”? It moves to Deleted props at the bottom of the page, where anyone can put it back.";
+  showModal("delModal", document.getElementById("delCancel"));
+}
+document.getElementById("delCancel").addEventListener("click", () => { delTarget = null; hideModal("delModal"); });
+document.getElementById("delConfirm").addEventListener("click", () => { const it = delTarget; delTarget = null; hideModal("delModal"); if (it) removeItem(it.id); });
+document.getElementById("delModal").addEventListener("click", e => { if (e.target.id === "delModal") { delTarget = null; hideModal("delModal"); } });
+
+function build() {
+  const ae = document.activeElement;
+  const focusId = ae && ae.id ? ae.id : null;
+  const selStart = focusId && ae.selectionStart != null ? ae.selectionStart : null;
+  const root = document.getElementById("scenes");
+  root.innerHTML = "";
+  allScenes().forEach(sc => {
+    const s = el("section", "scene"); s.id = sc.id;
+    const head = el("div", "scene-head");
+    const left = el("div");
+    left.append(el("div", "scene-num", sc.num), el("h2", null, sc.title));
+    const sc_count = el("span", "scene-count"); sc_count.dataset.scene = sc.id;
+    head.append(left, sc_count);
+    const meta = el("p", "meta"); sc.meta.forEach(m => meta.append(el("span", null, m)));
+    const prog = el("div", "scene-prog");
+    [["found", "fill found"], ["packed", "fill"]].forEach(([k, cls]) => {
+      const lab = el("span", "sp-label"); lab.id = "sp-" + k + "-" + sc.id;
+      const tr = el("div", "track"); const fl = el("div", cls); fl.id = "spf-" + k + "-" + sc.id; tr.append(fl);
+      prog.append(lab, tr);
+    });
+    s.append(head, meta, prog);
+    sc.groups.forEach(g => {
+      const grp = el("div", "group");
+      grp.append(el("h3", null, g.label));
+      if (g.flag) grp.append(el("div", "flag", g.flag));
+      const ul = el("ul", "list");
+      g.items.forEach(it => ul.append(buildItem(it)));
+      grp.append(ul); s.append(grp);
+    });
+    const addBtn = el("button", "add-open", "+ Add a prop to " + sc.title); addBtn.type = "button"; addBtn.id = "add-" + sc.id;
+    addBtn.addEventListener("click", () => openAdd(sc.id));
+    s.append(addBtn);
+    root.append(s);
+  });
+  builtSig = sigOf();
+  if (focusId) {
+    const n = document.getElementById(focusId);
+    if (n) { n.focus(); if (selStart != null && n.setSelectionRange) try { n.setSelectionRange(selStart, selStart); } catch (e) {} }
+  }
+}
+
+function buildRemoved() {
+  const box = document.getElementById("removed");
+  const byId = {}; allItems().forEach(it => byId[it.id] = it);
+  const ids = [...hidden].filter(id => byId[id]);
+  box.innerHTML = "";
+  if (!ids.length) { box.hidden = true; return; }
+  box.hidden = false;
+  const det = el("details");
+  det.append(el("summary", null, "Deleted props (" + ids.length + ")"));
+  const ul = el("ul", "removed-list");
+  ids.forEach(id => {
+    const li = el("li");
+    li.append(el("span", null, byId[id].name));
+    const b = el("button", "chip", "Put back"); b.type = "button";
+    b.addEventListener("click", () => restoreItem(id));
+    li.append(b); ul.append(li);
+  });
+  det.append(ul); box.append(det);
+}
+
+function render() {
+  if (sigOf() !== builtSig) build();
+  let total = 0, nf = 0, np = 0;
+  allScenes().forEach(sc => {
+    let t = 0, f = 0, p = 0;
+    sc.groups.forEach(g => g.items.forEach(it => {
+      const li = document.getElementById("item-" + it.id);
+      if (!li) return;
+      const gone = hidden.has(it.id);
+      li.classList.toggle("is-removed", gone);
+      const isP = !!packed[it.id], isF = isP || !!checks[it.id];
+      li.classList.toggle("is-found", isF && !isP);
+      li.classList.toggle("is-packed", isP);
+      li.dataset.found = isF ? "1" : "";
+      document.getElementById("f-" + it.id).setAttribute("aria-pressed", String(isF));
+      document.getElementById("p-" + it.id).setAttribute("aria-pressed", String(isP));
+      const wi = document.getElementById("who-" + it.id);
+      if (wi && document.activeElement !== wi && wi.value !== (notes[it.id] || "")) wi.value = notes[it.id] || "";
+      if (gone) return;
+      t++; if (isF) f++; if (isP) p++;
+    }));
+    total += t; nf += f; np += p;
+    document.querySelector('[data-scene="' + sc.id + '"]').textContent = t ? Math.round(f / t * 100) + "% found" : "";
+    const setSp = (k, n) => {
+      const lab = document.getElementById("sp-" + k + "-" + sc.id), fl = document.getElementById("spf-" + k + "-" + sc.id);
+      if (lab) { lab.textContent = ""; lab.append(el("b", null, String(n)), document.createTextNode(" / " + t + " " + k)); }
+      if (fl) fl.style.width = (t ? n / t * 100 : 0) + "%";
+    };
+    setSp("found", f); setSp("packed", p);
+  });
+  document.querySelectorAll(".group").forEach(g => {
+    const items = [...g.querySelectorAll(".item")].filter(i => !i.classList.contains("is-removed"));
+    g.classList.toggle("all-removed", items.length === 0);
+    g.classList.toggle("all-found", items.every(i => i.dataset.found === "1"));
+    g.classList.toggle("all-packed", items.every(i => i.classList.contains("is-packed")));
+  });
+  document.getElementById("countFound").textContent = nf + " / " + total + " found";
+  document.getElementById("countPacked").textContent = np + " / " + total + " packed";
+  document.getElementById("fillFound").style.width = (total ? (nf / total) * 100 : 0) + "%";
+  document.getElementById("fillPacked").style.width = (total ? (np / total) * 100 : 0) + "%";
+  buildRemoved();
+}
+
+function saveLocal() {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(checks));
+    localStorage.setItem(LS_PACKED, JSON.stringify(packed));
+    localStorage.setItem(LS_NOTES, JSON.stringify(notes));
+    localStorage.setItem(LS_CUSTOM, JSON.stringify(custom));
+    localStorage.setItem(LS_HIDDEN, JSON.stringify([...hidden]));
+    localStorage.setItem("winter-props-edits-v1", JSON.stringify(edits));
+  } catch (e) {}
+}
+
+const API = "https://script.google.com/macros/s/AKfycbzYJgGMDBe38vjwxIASdlDQLnn9Un-DZD-ThaMZRcQPdjIcSUWnfcW4n9biUAi3VbsIag/exec";
+const pending = {};
+const POST = body => fetch(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(body) }).then(r => r.json());
+const OFFLINE_MSG = "Couldn't reach the shared list. Check your connection and try again.";
+
+async function pushDoc(id) {
+  const note = (notes[id] || "").trim();
+  lastSent[id] = notes[id] || "";
+  pending[id] = (pending[id] || 0) + 1;
+  try {
+    const j = await POST({ action: "set", id, done: !!checks[id] || !!packed[id], packed: !!packed[id], note });
+    pending[id]--;
+    applyRemote(j);
+    setSync("Saved. Everyone with the link sees this.");
+  } catch (e) {
+    pending[id]--;
+    setSync(OFFLINE_MSG);
+  }
+}
+
+let hidePending = 0;
+function applyRemote(j) {
+  if (!j || !j.items) return;
+  const items = j.items;
+  const ae = document.activeElement;
+  const focused = ae && ae.id && ae.id.startsWith("who-") ? ae.id.slice(4) : null;
+  const nc = {}, np = {}, nn = {};
+  Object.keys(items).forEach(id => {
+    const v = items[id] || {};
+    if (v.done) nc[id] = true; if (v.packed) np[id] = true; if (v.note) nn[id] = v.note;
+  });
+  const keep = Object.keys(pending).filter(k => pending[k] > 0);
+  if (focused) keep.push(focused);
+  keep.forEach(id => {
+    if (checks[id]) nc[id] = true; else delete nc[id];
+    if (packed[id]) np[id] = true; else delete np[id];
+    if (notes[id]) nn[id] = notes[id]; else delete nn[id];
+  });
+  checks = nc; packed = np; notes = nn;
+  if (Array.isArray(j.custom) && !hidePending) custom = j.custom.slice().sort((a, b) => (a.created || 0) - (b.created || 0));
+  if (j.edits && typeof j.edits === "object" && !Array.isArray(j.edits) && !hidePending) edits = j.edits;
+  if (Array.isArray(j.hidden) && !hidePending) hidden = new Set(j.hidden);
+  saveLocal(); render();
+}
+
+async function pull() {
+  try {
+    const j = await (await fetch(API)).json();
+    if (j && j.items) { applyRemote(j); setSync("Live. Updates every few seconds."); }
+  } catch (e) { setSync("Offline. Showing the last list this phone saw."); }
+}
+
+// Packing something means you have it; un-finding something un-packs it.
+async function setState(id, which, on) {
+  if (which === "found") {
+    if (on) checks[id] = true; else { delete checks[id]; delete packed[id]; }
+  } else {
+    if (on) { packed[id] = true; checks[id] = true; } else delete packed[id];
+  }
+  saveLocal(); render();
+  await pushDoc(id);
+}
+
+let photoData = "", photoRemoved = false, formMode = "add", editTarget = null;
+function resetAddForm() {
+  ["addName", "addDesc", "addWho"].forEach(id => document.getElementById(id).value = "");
+  photoData = ""; photoRemoved = false;
+  document.getElementById("addPhoto").value = "";
+  showPhoto("");
+  const err = document.getElementById("addErr"); err.hidden = true; err.textContent = "";
+}
+function showPhoto(src) {
+  const prev = document.getElementById("photoPrev"), pick = document.getElementById("photoPick"), im = document.getElementById("photoImg");
+  if (src) { im.src = src; prev.hidden = false; pick.hidden = true; }
+  else { im.removeAttribute("src"); prev.hidden = true; pick.hidden = false; }
+}
+function clearPhoto() {
+  photoData = ""; photoRemoved = true;
+  document.getElementById("addPhoto").value = "";
+  showPhoto("");
+}
+function setFormMode(mode) {
+  formMode = mode;
+  const edit = mode === "edit";
+  document.getElementById("addTitle").textContent = edit ? "Edit prop" : "Add a prop";
+  document.getElementById("sceneFld").hidden = edit;
+  document.getElementById("whoFld").hidden = edit;
+  const b = document.getElementById("addSubmit"); b.disabled = false; b.textContent = edit ? "Save changes" : "Add prop";
+}
+function openAdd(scene) {
+  editTarget = null;
+  resetAddForm(); setFormMode("add");
+  document.getElementById("addScene").value = scene;
+  showModal("addModal", document.getElementById("addName"));
+}
+function openEdit(it) {
+  editTarget = it;
+  resetAddForm(); setFormMode("edit");
+  document.getElementById("addName").value = it.name;
+  document.getElementById("addDesc").value = it.note || "";
+  if (hasImg(it)) showPhoto(imgSrc(it, 300));
+  showModal("addModal", document.getElementById("addName"));
+}
+function resizeImage(file, max) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+      const c = document.createElement("canvas");
+      c.width = Math.max(1, Math.round(img.naturalWidth * k)); c.height = Math.max(1, Math.round(img.naturalHeight * k));
+      const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL("image/jpeg", 0.82));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("unreadable")); };
+    img.src = url;
+  });
+}
+document.getElementById("addPhoto").addEventListener("change", async e => {
+  const f = e.target.files && e.target.files[0];
+  const err = document.getElementById("addErr");
+  if (!f) return;
+  try {
+    photoData = await resizeImage(f, 1200);
+    photoRemoved = false;
+    showPhoto(photoData);
+    err.hidden = true;
+  } catch (x) {
+    clearPhoto();
+    err.textContent = "That photo couldn't be opened. Try a JPG or PNG, or take a screenshot of it and pick that.";
+    err.hidden = false;
+  }
+});
+document.getElementById("photoClear").addEventListener("click", clearPhoto);
+document.getElementById("addCancel").addEventListener("click", () => hideModal("addModal"));
+document.getElementById("addModal").addEventListener("click", e => { if (e.target.id === "addModal") hideModal("addModal"); });
+document.getElementById("addForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const name = document.getElementById("addName").value.trim();
+  const err = document.getElementById("addErr");
+  if (!name) { err.textContent = "Give the prop a name."; err.hidden = false; document.getElementById("addName").focus(); return; }
+  const btn = document.getElementById("addSubmit");
+  if (formMode === "edit") {
+    const it = editTarget;
+    btn.disabled = true; btn.textContent = photoData ? "Uploading photo…" : "Saving…";
+    try {
+      const body = { action: "edit", id: it.id, name, desc: document.getElementById("addDesc").value.trim() };
+      if (photoData) body.image = photoData; else if (photoRemoved) body.removeImage = true;
+      const j = await POST(body);
+      if (!j || !j.ok) throw new Error("failed");
+      applyRemote(j);
+      hideModal("addModal");
+      setSync(j.warning ? "Saved “" + name + "”, but " + j.warning : "Saved changes to “" + name + "”.");
+    } catch (x) {
+      btn.disabled = false; btn.textContent = "Save changes";
+      err.textContent = "Couldn't save the changes. Check your connection and try again.";
+      err.hidden = false;
+    }
+    return;
+  }
+  btn.disabled = true; btn.textContent = photoData ? "Uploading photo…" : "Adding…";
+  try {
+    const j = await POST({
+      action: "add",
+      scene: document.getElementById("addScene").value,
+      name,
+      desc: document.getElementById("addDesc").value.trim(),
+      note: document.getElementById("addWho").value.trim(),
+      image: photoData
+    });
+    if (!j || !j.ok) throw new Error((j && j.error) || "failed");
+    applyRemote(j);
+    hideModal("addModal");
+    setSync(j.warning ? "Added “" + name + "”, but " + j.warning : "Added “" + name + "”. Everyone with the link sees it.");
+  } catch (x) {
+    btn.disabled = false; btn.textContent = "Add prop";
+    err.textContent = "Couldn't add the prop. Check your connection and try again.";
+    err.hidden = false;
+  }
+});
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  if (!document.getElementById("addModal").hidden) hideModal("addModal");
+  if (!document.getElementById("delModal").hidden) { delTarget = null; hideModal("delModal"); }
+});
+
+async function removeItem(id) {
+  hidden.add(id); hidePending++; saveLocal(); render();
+  try { const j = await POST({ action: "remove", id }); hidePending--; applyRemote(j); setSync("Deleted. You can put it back under Deleted props at the bottom."); }
+  catch (e) { hidePending--; hidden.delete(id); saveLocal(); render(); setSync(OFFLINE_MSG); }
+}
+
+async function restoreItem(id) {
+  hidden.delete(id); hidePending++; saveLocal(); render();
+  try { const j = await POST({ action: "restore", id }); hidePending--; applyRemote(j); setSync("Put back on the list."); }
+  catch (e) { hidePending--; hidden.add(id); saveLocal(); render(); setSync(OFFLINE_MSG); }
+}
+
+function setSync(t) { document.getElementById("sync").textContent = t; }
+
+document.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => {
+  const v = b.dataset.view;
+  document.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  document.body.classList.toggle("v-find", v === "find");
+  document.body.classList.toggle("v-pack", v === "pack");
+}));
+
+function wireReset() {
+  const area = document.getElementById("resetArea");
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    area.innerHTML = "";
+    const q = el("span", null, "Clear which checkmarks?");
+    const onlyP = el("button", "chip", "Packed only");
+    const all = el("button", "chip", "Found and packed");
+    const no = el("button", "chip", "Cancel");
+    const run = async scope => {
+      const ids = allItems().map(it => it.id).filter(id => checks[id] || packed[id]);
+      if (scope === "all") ids.forEach(id => delete checks[id]);
+      ids.forEach(id => delete packed[id]);
+      saveLocal(); render(); restore();
+      await Promise.all(ids.map(id => pushDoc(id)));
+    };
+    onlyP.addEventListener("click", () => run("packed"));
+    all.addEventListener("click", () => run("all"));
+    no.addEventListener("click", restore);
+    area.append(q, onlyP, all, no);
+  });
+  function restore() { area.innerHTML = '<button class="chip" id="resetBtn">Clear checkmarks</button>'; wireReset(); }
+}
+
+build(); render(); wireReset();
+
+pull();
+setInterval(() => { if (!document.hidden) pull(); }, 8000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) pull(); });
+</script>
+
+</body>
+</html>

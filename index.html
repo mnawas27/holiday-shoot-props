@@ -606,7 +606,7 @@ function saveLocal() {
   } catch (e) {}
 }
 
-const API = "https://script.google.com/macros/s/AKfycbzYJgGMDBe38vjwxIASdlDQLnn9Un-DZD-ThaMZRcQPdjIcSUWnfcW4n9biUAi3VbsIag/exec";
+const API = "https://script.google.com/macros/s/AKfycbw8WmxPb5Z6M5xy_aGFzNaT2L1j7iF9U1bui_z1j3c__UCDQT93bThShOwBvC7s_UZr/exec";
 const pending = {};
 const POST = body => fetch(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(body) }).then(r => r.json());
 const OFFLINE_MSG = "Couldn't reach the shared list. Check your connection and try again.";
